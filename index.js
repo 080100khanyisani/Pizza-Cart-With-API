@@ -59,8 +59,16 @@ document.addEventListener("alpine:init", () => {
                 return axios.get(getFeatureURL);
             },
             getCart() {
+                console.log({cartID: this.cartId});
                 const getCartURL = `https://pizza-api.projectcodex.net/api/pizza-cart/${this.cartId}/get`
                 return this.cartId ? axios.get(getCartURL) : '';
+            },
+            postFeature(pizzaId) {
+                console.log({pizzaId});
+                return axios.post(`https://pizza-api.projectcodex.net/api/pizzas/featured`, {
+                    "username": this.username,
+                    "pizza_id": pizzaId
+                })
             },
             addPizza(pizzaId) {
 
@@ -121,13 +129,18 @@ document.addEventListener("alpine:init", () => {
 
                         const cartData = result.data;
 
-                        this.cartPizzas = cartData.pizzas;
+                        this.cartPizzas = cartData.pizzas?.map(pizza =>{
+                            return {
+                                ...pizza,
+                                size: pizza.size.charAt(0).toUpperCase() + pizza.size.slice(1)
+                            }
+                        })
                         this.cartData = cartData;
                         this.cartTotal = cartData.total.toFixed(2);
 
                     });
                 this.getFeature().then(result => {
-                    console.log(result.data);
+                    // console.log(result.data);
                     this.featuedPizza = result.data.pizzas
                 });
             },
@@ -155,13 +168,22 @@ document.addEventListener("alpine:init", () => {
                         .createCart()
                         .then(() => {
                             this.showCartData();
-                            this.fetchHistory()
+                            console.log('show cart data');
+                            this.fetchHistory();
+                            this.getFeature()
                             // console.log(JSON.parse(localStorage.getItem('cartHistory')).pizzas);
                             // this.history = JSON.parse(localStorage.getItem('cartHistory')).pizzas;
                         })
                 }
             },
-            
+            addToFeature(pizzaId) {
+                this.postFeature(pizzaId)
+                    .then((r) => {
+                        console.log(r);
+                        this.getFeature();
+
+                    })
+            },
             addPizzaToCart(pizzaId) {
                 // alert(pizzaId)
                 this

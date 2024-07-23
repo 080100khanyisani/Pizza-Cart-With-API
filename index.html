@@ -117,13 +117,29 @@
                 </div>
             </template>
         </div>
+
+        <div class="row">
+            <div class="col s12 m12 l12" style="display: flex;">
+                <template x-for="pizza in featuedPizza" :key="pizza.id">
+                    <div :class="pizza.size" class="pizza-option">
+                        <h6 x-text="pizza.flavour + ' Pizza'"></h6>
+                        <img class="Pic1" src="./pizza-one.png" alt="pizza.size + 'Pizza'">
+                        <div class="price" x-text="'R'  + pizza.price"></div>
+                        <p x-text="pizza.description"></p>
+                        <p x-text="pizza.size"></p>
+                        <button x-on:click="addPizzaToCart(pizza.id)">Buy</button>
+                        
+                    </div>
+                </template>
+            </div>
+        </div>
         
         <div class="row">
 
             <div class="col s12 m12 l12">
 
                 <div class="pizza-options" x-show="cartId">
-
+                    
 
                     <ul>
 
@@ -132,11 +148,12 @@
 
                             <div :class="pizza.size" class="pizza-option">
                                 <h5 x-text="pizza.flavour + ' Pizza'"></h5>
-                                <img class="Pic1" src="./pizza-one.png" alt="pizza,size + 'Pizza'">
+                                <img class="Pic1" src="./pizza-one.png" alt="pizza.size + 'Pizza'">
                                 <div class="price" x-text="'R' + pizza.price"></div>
                                 <p x-text="pizza.description"></p>
                                 <p x-text="'Size: ' + pizza.size.charAt(0).toUpperCase() + pizza.size.slice(1)"></p>
-                                <button x-on:click="addPizzaToCart(pizza.id)">Add To Cart</button>
+                                <button x-on:click="addPizzaToCart(pizza.id)">Buy</button>
+                                <button x-on:click="addToFeature(pizza.id)">Add</button>
 
                             </div>
 
