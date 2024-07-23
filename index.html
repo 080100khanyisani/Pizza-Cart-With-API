@@ -76,7 +76,7 @@
                             </tr>
 
                             <tr>
-                                <td>Pay Now</td>
+                                <td><label for="amount" style="color: black;">Enter Amount:</label></td>
                                 <td><input x-model="paymentAmount" class="input" type="number" placeholder="Pay Amount">
                                 </td>
                                 <td x-on:click="payForCart()" style="text-align: right;"><button>Pay</button></td>
@@ -162,7 +162,7 @@
                                 <p x-text="pizza.description"></p>
                                 <p x-text="'Size: ' + pizza.size.charAt(0).toUpperCase() + pizza.size.slice(1)"></p>
                                 <button x-on:click="addPizzaToCart(pizza.id)">Buy</button>
-                                <button x-on:click="addToFeature(pizza.id)">Add</button>
+                                <button x-on:click="addToFeature(pizza.id)">Set As Feature</button>
 
                             </div>
 

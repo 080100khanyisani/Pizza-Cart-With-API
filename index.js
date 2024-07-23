@@ -116,14 +116,9 @@ document.addEventListener("alpine:init", () => {
                             localStorage.setItem('cartHistory', JSON.stringify(storage))
                         }
                         return result
-                        // .then(result => {
-                        //     const cartPizzas  = result.data.pizza;
-                        //     cartPizzas.every(pizza => {
-                        //         this.history.push(pizza);
-
-                        //     });
-                        // })
+                        
                     })
+                
 
             },
             showCartData() {
@@ -215,6 +210,7 @@ document.addEventListener("alpine:init", () => {
                 this.showHistory = !this.showHistory
             },
             payForCart() {
+                
                 // alert("Pay now: " + this.paymentAmount)
                 this
                     .pay(this.paymentAmount)
