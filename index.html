@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 </head>
 
-<body x-data="pizzaCart">
+<body class="#263238 blue-grey darken-4" x-data="pizzaCart">
 
     <div class="container">
         <div class="header">
@@ -24,10 +24,10 @@
 
         <h1 x-text="title"></h1>
 
-        <div class="#b2ff59 light-green accent-2" x-cloak>
+        <div class="N/A transparent" x-cloak>
             <div>
                 <div>
-                    Username: <input type="text" x-model="username">
+                    Username: <input type="text" x-model="username" style="color: #ffffff;">
                     <button x-on:click="login">Login</button>
                     <button x-on:click="logout" x-show="cartId">Logout</button>
                 </div>
@@ -89,10 +89,10 @@
 
         </div>
 
-        <button x-on:click="showHistoryEvent()">History</button>
-
-    
+        
+        
         <div x-show="showHistory" class="pizza-options">
+            
 
             <template x-for="cart in history">
                 <div class="cartHistory">
@@ -118,19 +118,28 @@
             </template>
         </div>
 
-        <div class="row">
-            <div class="col s12 m12 l12" style="display: flex;">
-                <template x-for="pizza in featuedPizza" :key="pizza.id">
-                    <div :class="pizza.size" class="pizza-option">
-                        <h6 x-text="pizza.flavour + ' Pizza'"></h6>
-                        <img class="Pic1" src="./pizza-one.png" alt="pizza.size + 'Pizza'">
-                        <div class="price" x-text="'R'  + pizza.price"></div>
-                        <p x-text="pizza.description"></p>
-                        <p x-text="pizza.size"></p>
-                        <button x-on:click="addPizzaToCart(pizza.id)">Buy</button>
-                        
-                    </div>
-                </template>
+
+        <div>
+
+            <div x-show="username && cartId">
+    
+                <button x-on:click="showHistoryEvent()">History</button>
+            </div>
+
+            <div class="row" x-show="username && cartId">
+                <div class="col s12 m12 l12" style="display: flex;" >
+                    <template x-for="pizza in featuedPizza" :key="pizza.id">
+                        <div :class="pizza.size" class="pizza-option" x-show="username && cartId">
+                            <h6 x-text="pizza.flavour + ' Pizza'"></h6>
+                            <img class="Pic1" src="./pizza-5179939_960_720.png" alt="pizza.size + 'Pizza'">
+                            <div class="price" x-text="'R'  + pizza.price"></div>
+                            <p x-text="pizza.description"></p>
+                            <p x-text="pizza.size"></p>
+                            <button x-on:click="addPizzaToCart(pizza.id)">Buy</button>
+                            
+                        </div>
+                    </template>
+                </div>
             </div>
         </div>
         
@@ -148,7 +157,7 @@
 
                             <div :class="pizza.size" class="pizza-option">
                                 <h5 x-text="pizza.flavour + ' Pizza'"></h5>
-                                <img class="Pic1" src="./pizza-one.png" alt="pizza.size + 'Pizza'">
+                                <img class="Pic1" src="./feche-a-pizza-italiana.png" alt="pizza.size + 'Pizza'">
                                 <div class="price" x-text="'R' + pizza.price"></div>
                                 <p x-text="pizza.description"></p>
                                 <p x-text="'Size: ' + pizza.size.charAt(0).toUpperCase() + pizza.size.slice(1)"></p>
@@ -165,9 +174,11 @@
 
         </div>
 
-        <div class="footer">
-            <p>Contact us at: (021)-541-1000 twitter /fb /insta @perfectpizza</p>
-            <p>Pizza Plaza, Dough Road, Base Town</p>
+        <div class="footer" x-show="username && cartId">
+            <div class="#4a148c purple darken-4">
+                <p>Contact us at: (021)-541-1000 twitter /fb /insta @perfectpizza</p>
+                <p>Pizza Plaza, Dough Road, Base Town</p>
+            </div>
         </div>
     </div>
 

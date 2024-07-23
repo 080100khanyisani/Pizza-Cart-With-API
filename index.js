@@ -30,8 +30,11 @@ document.addEventListener("alpine:init", () => {
                 if (confirm('Do you want to logout?')) {
                     this.username = '',
                         this.cartId = '',
+                        this.showHistory = '',
+                        // this.featuedPizza = '',
                         // localStorage['cartId'],
                         localStorage.removeItem('username');
+                        localStorage.removeItem('featuedPizza');
                 }
             },
             createCart() {
@@ -179,13 +182,17 @@ document.addEventListener("alpine:init", () => {
             addToFeature(pizzaId) {
                 this.postFeature(pizzaId)
                     .then((r) => {
-                        console.log(r);
+                        // console.log(r);
                         this.getFeature();
 
                     })
             },
             addPizzaToCart(pizzaId) {
                 // alert(pizzaId)
+                // const button = document.getElementById('myButton');
+                // button.addEventListener('click', function() {
+                //     alert('Button was clicked!');
+                //   });
                 this
                     .addPizza(pizzaId)
                     .then(() => {
@@ -214,7 +221,7 @@ document.addEventListener("alpine:init", () => {
                     .then(result => {
                         if (result.data.status == 'failure') {
                             this.message = result.data.message;
-                            setTimeout(() => this.message = 'Not enough payment', 3000);
+                            setTimeout(() => this.message = '', 3000);
                         } else {
                             this.message = 'Payment recieved!';
                             setTimeout(() => {
