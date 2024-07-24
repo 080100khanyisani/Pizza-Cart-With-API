@@ -36,10 +36,12 @@
                 </div>
             </div>
 
+            <div class="messages" x-show="message" x-text="message">message here</div>
+
             <div class="cart" x-show="cartPizzas.length > 0">
 
                 <h2>Your Cart</h2>
-                <div class="message" x-text="message">message here</div>
+                <!-- <div class="message" x-show="message" x-text="message">message here</div> -->
                 <div class="row">
                     <div class="col s12">
 
@@ -79,9 +81,10 @@
                                 <td><label for="amount" style="color: black;">Enter Amount:</label></td>
                                 <td><input x-model="paymentAmount" class="input" type="number" placeholder="Pay Amount">
                                 </td>
-                                <td><div x-show="message" x-text="message" class="floating-message"></div></td>
+                                
                                 <td><div id="changeDisplay" class="floating-message"></div></td>
                                 <td x-on:click="payForCart()" style="text-align: right;"><button>Pay</button></td>
+                                <td></td>
                             </tr>
                         </table>
                     </div>

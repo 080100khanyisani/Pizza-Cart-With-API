@@ -216,12 +216,12 @@ document.addEventListener("alpine:init", () => {
                     .pay(this.paymentAmount)
                     .then(result => {
                         if (result.data.status == 'failure') {
-                            this.message = result.data.message;
+                            this.displayMessage(result.data.message);
                             setTimeout(() => this.message = '', 3000);
                         } else {
                             const change = this.paymentAmount - this.cartTotal;
                             this.displayChange(`Change: R${change.toFixed(2)}`);
-                            this.message = 'Payment recieved!';
+                            this.displayMessage('Payment received!');
                             setTimeout(() => {
                                 this.message = '';
                                 this.cartPizzas = [];
@@ -233,6 +233,10 @@ document.addEventListener("alpine:init", () => {
                             }, 3000);
                         }
                     })
+            },
+            displayMessage(message) {
+                this.message = message;
+                setTimeout(() => this.message = '', 3000);
             },
             displayChange(message) {
                 const changeDisplay = document.getElementById('changeDisplay');

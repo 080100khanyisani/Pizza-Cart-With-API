@@ -12,16 +12,35 @@ h1 {
     text-shadow: 5px 5px #607d8b;
 }
 
-.floating-message {
+.cart-container {
+    position: relative;
+    padding: 20px;
+    margin-top: 50px;
+}
+
+.messages {
     position: fixed;
-    top: 20px;
-    right: 20px;
+    top: 400px;
+    right: 800px;
+    background-color: #4db6ac;
+    color: whitesmoke;
+    padding: 10px;
+    border: 1px solid yellowgreen;
+    border-radius: 4px;
+    display: none;
+}
+
+.floating-message {
+    position: absolute;
+    top: 400px;
+    right: 600px;
     background-color: #333;
     color: white;
     padding: 10px;
     border-radius: 4px;
     display: none;
-}
+    /* z-index: 10; */
+  }
 
 button {
     background-color: #4a148c;
