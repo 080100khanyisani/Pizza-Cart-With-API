@@ -35,8 +35,8 @@
                     Cart code: <span x-text="cartId"></span>
                 </div>
             </div>
-            <div class="messages">
-                <span x-show="message" x-text="message">message here</span>
+            <div>
+                <div x-show="message" x-text="message">message here</div>
             </div>
 
             <div class="cart" x-show="cartPizzas.length > 0">
@@ -83,6 +83,7 @@
                                 <td><input x-model="paymentAmount" class="input" type="number" placeholder="Pay Amount">
                                 </td>
                                 
+                                <td><div id="displayMessage" class="message"></div></td>
                                 <td><div id="changeDisplay" class="floating-message"></div></td>
                                 <td x-on:click="payForCart()" style="text-align: right;"><button>Pay</button></td>
                                 <td></td>
@@ -114,6 +115,7 @@
                         </tr>
     
                         <tr>
+                            <td x-text="cart.flavour"></td>
                             <td x-text="cart.size"></td>
                             <td x-text="cart.price"></td>
                             <td x-text="cart.qty"></td>

@@ -19,6 +19,7 @@ h1 {
 }
 
 .messages {
+    display: none;
     position: fixed;
     top: 70px;
     right: 200px;
@@ -38,7 +39,7 @@ h1 {
     color: white;
     padding: 10px;
     border-radius: 4px;
-    display: none;
+    /* display: none; */
     /* z-index: 10; */
   }
 
