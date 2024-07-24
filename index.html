@@ -35,8 +35,9 @@
                     Cart code: <span x-text="cartId"></span>
                 </div>
             </div>
-
-            <div class="messages" x-show="message" x-text="message">message here</div>
+            <div class="messages">
+                <span x-show="message" x-text="message">message here</span>
+            </div>
 
             <div class="cart" x-show="cartPizzas.length > 0">
 
@@ -102,6 +103,9 @@
             <template x-for="cart in history">
                 <div class="cartHistory">
                     <table>
+                        <tr>
+                            <th x-text="cartId"></th>
+                        </tr>
                         <tr>
                             <th>Size</th>
                             <th>Price</th>

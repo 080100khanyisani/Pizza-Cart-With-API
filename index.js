@@ -216,7 +216,7 @@ document.addEventListener("alpine:init", () => {
                     .pay(this.paymentAmount)
                     .then(result => {
                         if (result.data.status == 'failure') {
-                            this.displayMessage(result.data.message);
+                            this.displayMessage('Payment failed!');
                             setTimeout(() => this.message = '', 3000);
                         } else {
                             const change = this.paymentAmount - this.cartTotal;

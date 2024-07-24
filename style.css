@@ -20,14 +20,14 @@ h1 {
 
 .messages {
     position: fixed;
-    top: 400px;
-    right: 800px;
-    background-color: #4db6ac;
+    top: 70px;
+    right: 200px;
+    background-color: #323333;
     color: whitesmoke;
     padding: 10px;
-    border: 1px solid yellowgreen;
+    border: 1px solid rgb(12, 12, 12);
     border-radius: 4px;
-    display: none;
+    
 }
 
 .floating-message {
