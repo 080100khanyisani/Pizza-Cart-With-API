@@ -219,6 +219,8 @@ document.addEventListener("alpine:init", () => {
                             this.message = result.data.message;
                             setTimeout(() => this.message = '', 3000);
                         } else {
+                            const change = this.paymentAmount - this.cartTotal;
+                            this.displayChange(`Change: R${change.toFixed(2)}`);
                             this.message = 'Payment recieved!';
                             setTimeout(() => {
                                 this.message = '';
@@ -232,6 +234,16 @@ document.addEventListener("alpine:init", () => {
                         }
                     })
             },
+            displayChange(message) {
+                const changeDisplay = document.getElementById('changeDisplay');
+                changeDisplay.innerText = message;
+                changeDisplay.style.display = 'block';
+
+                
+                setTimeout(() => {
+                    changeDisplay.style.display = 'none';
+                }, 3000);
+            }
         }
     });
 });

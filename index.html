@@ -79,6 +79,8 @@
                                 <td><label for="amount" style="color: black;">Enter Amount:</label></td>
                                 <td><input x-model="paymentAmount" class="input" type="number" placeholder="Pay Amount">
                                 </td>
+                                <td><div x-show="message" x-text="message" class="floating-message"></div></td>
+                                <td><div id="changeDisplay" class="floating-message"></div></td>
                                 <td x-on:click="payForCart()" style="text-align: right;"><button>Pay</button></td>
                             </tr>
                         </table>
