@@ -108,6 +108,7 @@
                             <th x-text="cartId"></th>
                         </tr>
                         <tr>
+                            <th>Flavour</th>
                             <th>Size</th>
                             <th>Price</th>
                             <th>Qty</th>
@@ -139,7 +140,7 @@
 
             <div class="row" x-show="username && cartId">
                 <div class="col s12 m12 l12" style="display: flex;" >
-                    <template x-for="pizza in featuedPizza" :key="pizza.id">
+                    <template x-for="pizza in featuredPizza" :key="pizza.id">
                         <div :class="pizza.size" class="pizza-option" x-show="username && cartId">
                             <h6 x-text="pizza.flavour + ' Pizza'"></h6>
                             <img class="Pic1" src="./pizza-5179939_960_720.png" alt="pizza.size + 'Pizza'">
